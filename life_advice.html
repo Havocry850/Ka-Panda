@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ka-Panda - Life Advice</title>
+  <style>
+    /* General reset and styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Background GIF styling */
+    body {
+      background: url('https://gifdb.com/images/high/panda-waving-cartoon-sticker-pi4qfklzce0s7zo5.gif') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f39c12;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Back Button Styling */
+    .back-button {
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: white;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+      width: 100px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: rgba(243, 156, 18, 0.9);
+      box-shadow: 0 0 15px rgba(243, 156, 18, 0.9);
+    }
+
+    /* Advice Section Styling */
+    .advice-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .advice-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .advice-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .advice-buttons button {
+      background: rgba(243, 156, 18, 0.9);
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: popIn 0.4s ease-out forwards;
+    }
+
+    .advice-buttons button:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+
+    .advice-buttons button:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .advice-buttons button:nth-child(3) {
+      animation-delay: 0.5s;
+    }
+
+    .advice-buttons button:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    .advice-buttons button:hover {
+      background: rgba(243, 156, 18, 1);
+    }
+
+    /* Question Submission Styling */
+    .question-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .question-container textarea {
+      width: 90%;
+      max-width: 600px;
+      height: 100px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      resize: none;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: black;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .question-container button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: rgba(243, 156, 18, 0.9);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .question-container button:hover {
+      background: rgba(243, 156, 18, 1);
+    }
+
+    /* Response Display Styling */
+    .response-display {
+      margin-top: 5px;
+      padding: 10px;
+      font-size: 1.2rem;
+      background: rgba(255, 255, 255, 0);
+      border-radius: 5px;
+      text-align: center;
+      color: white;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+      transform: scale(0.9);
+      opacity: 0;
+      animation: zoomIn 0.5s ease forwards;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Ka-Panda</h1>
+    <div class="nav-buttons">
+        <a href="home.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="life_advice.html">Life Advice</a>
+        <a href="love_advice.html">Love Advice</a>
+        <a href="maturity_tips.html">Maturity Tips</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="report-a-problem.html">Report a Problem</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="log-out.html">Log Out</a>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <a href="home.html" class="back-button">Back</a>
+
+  <!-- Main Content -->
+  <div class="advice-container">
+    <h2>Life Advice</h2>
+    <p>Click on a button below to see advice for life's challenges!</p>
+    <div class="advice-buttons">
+      <button onclick="showAdvice('Take small steps every day toward your goals. Progress is key!')">Progress</button>
+      <button onclick="showAdvice('Mistakes are proof that you’re trying. Learn from them and grow.')">Growth</button>
+      <button onclick="showAdvice('Gratitude turns what we have into enough. Count your blessings!')">Gratitude</button>
+      <button onclick="showAdvice('Time is your most valuable asset. Spend it wisely.')">Time Management</button>
+    </div>
+
+    <!-- Advice Display -->
+    <div class="response-display" id="adviceDisplay">
+      Click a button to see advice here.
+    </div>
+  </div>
+
+  <!-- Question Submission -->
+  <div class="question-container">
+    <h3>Have a specific question?</h3>
+    <textarea id="userQuestion" placeholder="Type your question here..."></textarea>
+    <br>
+    <button onclick="submitQuestion()">Submit Question</button>
+    <div class="response-display" id="customResponse"></div>
+  </div>
+
+  <script>
+    // Function to display advice
+    function showAdvice(advice) {
+      const adviceDisplay = document.getElementById('adviceDisplay');
+      adviceDisplay.textContent = advice;
+    }
+
+    // Function to handle question submission
+    function submitQuestion() {
+      const userQuestion = document.getElementById('userQuestion').value.toLowerCase().trim();
+      const responseDisplay = document.getElementById('customResponse');
+
+      if (userQuestion === "") {
+        alert("Please type a question before submitting.");
+      } else {
+        let response;
+
+        // Enhanced keyword matching for responses
+        if (userQuestion.includes("stress")) {
+          response = "Take a deep breath. Remember, stress is temporary and manageable.";
+        } else if (userQuestion.includes("career")) {
+          response = "Focus on building your skills and network. Opportunities come with preparation.";
+        } else if (userQuestion.includes("failure")) {
+          response = "Failures are lessons in disguise. Learn, adapt, and keep moving forward.";
+        } else {
+          response = "Your question is valuable. We're preparing a detailed response for you.";
+        }
+
+        responseDisplay.textContent = response;
+        document.getElementById('userQuestion').value = ""; // Clear the text area
+      }
+    }
+  </script>
+</body>
+</html>

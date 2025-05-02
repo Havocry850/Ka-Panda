@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ka-Panda - Notifications</title>
+  <style>
+    /* General reset and styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Background GIF styling */
+    body {
+      background: url('https://gifdb.com/images/high/panda-waving-cartoon-sticker-pi4qfklzce0s7zo5.gif') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f39c12;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Notifications Section Styling */
+    .notifications-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .notifications-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .notification {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      text-align: left;
+      color: white;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .notification p {
+      margin: 5px 0;
+    }
+
+    .no-notifications {
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+    }
+
+    /* Back button styling */
+    .back-button {
+      position: fixed;
+      top: 150px;
+      left: 370px;
+      background: rgba(0, 0, 0, 0.492);
+      color: white;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background: rgb(255, 153, 0);
+    }
+  </style>
+</head>
+<body>
+     <!-- Back Button -->
+  <a href="home.html" class="back-button">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+  
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Ka-Panda</h1>
+    <div class="nav-buttons">
+        <a href="home.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="life_advice.html">Life Advice</a>
+        <a href="love_advice.html">Love Advice</a>
+        <a href="maturity_tips.html">Maturity Tips</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="report-a-problem.html">Report a Problem</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="log-out.html">Log Out</a>
+    </div>
+  </div>
+
+  <!-- Notifications Section -->
+  <div class="notifications-container">
+    <h2>Notifications</h2>
+    <div id="notifications">
+      <!-- Placeholder for notifications -->
+      <p class="no-notifications">You have no notifications at the moment.</p>
+    </div>
+  </div>
+
+  <script>
+    // Notifications array (empty initially)
+    let notifications = [];
+
+    // Function to display notifications
+    function displayNotifications() {
+      const notificationsContainer = document.getElementById('notifications');
+      notificationsContainer.innerHTML = ''; // Clear previous content
+
+      if (notifications.length === 0) {
+        notificationsContainer.innerHTML = '<p class="no-notifications">You have no notifications at the moment.</p>';
+        return;
+      }
+
+      notifications.forEach(notification => {
+        const notificationDiv = document.createElement('div');
+        notificationDiv.classList.add('notification');
+        notificationDiv.innerHTML = `
+          <p><strong>${notification.message}</strong></p>
+          <p><em>${notification.time}</em></p>
+        `;
+        notificationsContainer.appendChild(notificationDiv);
+      });
+    }
+
+    // Function to add a new notification
+    function addNotification(message) {
+      const time = new Date().toLocaleTimeString();
+      notifications.push({ message, time });
+      displayNotifications();
+    }
+
+    // Simulate receiving advice or an event
+    setTimeout(() => {
+      addNotification("You received new advice in Life Advice!");
+    }, auto); // Notification appears after 5 seconds
+
+    setTimeout(() => {
+      addNotification("Your Love Advice question has been answered!");
+    }, auto); // Notification appears after 10 seconds
+
+    // Display notifications on page load
+    displayNotifications();
+  </script>
+</body>
+</html>

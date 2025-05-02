@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ka-Panda - Report a Problem</title>
+  <style>
+    /* General reset and styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Background GIF styling */
+    body {
+      background: url('https://gifdb.com/images/high/panda-waving-cartoon-sticker-pi4qfklzce0s7zo5.gif') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f39c12;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Report Form Styling */
+    .report-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .report-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .report-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .report-container label {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    .report-container input, 
+    .report-container select, 
+    .report-container textarea, 
+    .report-container button {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .report-container textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    .report-container button {
+      background: rgba(243, 156, 18, 0.9);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .report-container button:hover {
+      background: rgba(243, 156, 18, 1);
+    }
+
+    .report-success {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: lightgreen;
+    }
+
+    .report-error {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: red;
+    }
+    
+    /* Back button styling */
+    .back-button {
+      position: fixed;
+      top: 150px;
+      left: 370px;
+      background: rgba(0, 0, 0, 0.492);
+      color: white;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background: rgb(255, 153, 0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Button -->
+  <a href="home.html" class="back-button">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Ka-Panda</h1>
+    <div class="nav-buttons">
+        <a href="home.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="life_advice.html">Life Advice</a>
+        <a href="love_advice.html">Love Advice</a>
+        <a href="maturity_tips.html">Maturity Tips</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="report-a-problem.html">Report a Problem</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="log-out.html">Log Out</a>
+    </div>
+  </div>
+
+  <!-- Report a Problem Section -->
+  <div class="report-container">
+    <h2>Report a Problem</h2>
+    <p>If you're facing any issues, let us know by filling out the form below.</p>
+    <form id="reportForm">
+      <label for="problemType">Type of Problem:</label>
+      <select id="problemType" required>
+        <option value="" disabled selected>Select a problem type</option>
+        <option value="Technical Issue">Technical Issue</option>
+        <option value="Bug Report">Bug Report</option>
+        <option value="Feedback">Feedback</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="description">Description:</label>
+      <textarea id="description" placeholder="Describe the problem in detail..." required></textarea>
+
+      <label for="email">Your Email (optional):</label>
+      <input type="email" id="email" placeholder="Enter your email (optional)">
+
+      <button type="submit">Submit Report</button>
+    </form>
+
+    <div id="responseMessage"></div>
+  </div>
+
+  <script>
+    // Form submission handler
+    const reportForm = document.getElementById('reportForm');
+    const responseMessage = document.getElementById('responseMessage');
+
+    reportForm.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent default form submission
+      
+      // Retrieve form values
+      const problemType = document.getElementById('problemType').value;
+      const description = document.getElementById('description').value;
+      const email = document.getElementById('email').value;
+
+      // Simulate a successful submission
+      responseMessage.innerHTML = '<p class="report-success">Thank you! Your report has been submitted successfully.</p>';
+      
+      // Clear the form
+      reportForm.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ka-Panda - Maturity Tips</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General reset and styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    /* Background GIF styling */
+    body {
+      background: url('https://gifdb.com/images/high/panda-waving-cartoon-sticker-pi4qfklzce0s7zo5.gif') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f39c12;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .nav-buttons a:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Tips Section Styling */
+    .tips-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .tips-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .tips-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .tips-buttons button {
+      background: rgba(243, 156, 18, 0.9);
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .tips-buttons button:hover {
+      background: rgba(243, 156, 18, 1);
+      transform: scale(1.05);
+    }
+
+    /* Tips display box styling */
+    .tips-display {
+      margin-top: 30px;
+      padding: 15px;
+      font-size: 1.2rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      text-align: center;
+      color: white;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      animation: none;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+    }
+
+    /* Bounce animation */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .tips-display.bounce {
+      animation: bounce 0.6s ease;
+      transform: scale(1.1);
+    }
+
+    /* Back button styling */
+    .back-button {
+      position: fixed;
+      top: 150px;
+      left: 370px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .back-button i {
+      font-size: 1.2rem;
+    }
+
+    .back-button:hover {
+      background: rgba(243, 156, 18, 1);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Button -->
+  <a href="home.html" class="back-button">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Ka-Panda</h1>
+    <div class="nav-buttons">
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="life_advice.html">Life Advice</a>
+      <a href="love_advice.html">Love Advice</a>
+      <a href="maturity_tips.html">Maturity Tips</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="report-a-problem.html">Report a Problem</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="log-out.html">Log Out</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="tips-container">
+    <h2>Maturity Tips</h2>
+    <p>Click on a button below to gain insights on how to approach life with maturity and wisdom!</p>
+    <div class="tips-buttons">
+      <button onclick="showTip('Learn to listen more and speak less. Wisdom grows when you truly understand others.')">
+        <i class="fas fa-brain"></i> Active Listening
+      </button>
+      <button onclick="showTip('Take responsibility for your actions. Owning your mistakes is a sign of true maturity.')">
+        <i class="fas fa-check-circle"></i> Accountability
+      </button>
+      <button onclick="showTip('Stay calm in tough situations. Patience and composure lead to better outcomes.')">
+        <i class="fas fa-hourglass-half"></i> Patience
+      </button>
+      <button onclick="showTip('Think before you act. Reflect on your decisions and their long-term impact.')">
+        <i class="fas fa-lightbulb"></i> Thoughtful Decision-Making
+      </button>
+      <button onclick="showTip('Respect everyone’s differences. Being open-minded fosters mutual understanding.')">
+        <i class="fas fa-users"></i> Respecting Differences
+      </button>
+      <button onclick="showTip('Value time—it’s your most precious resource. Spend it wisely.')">
+        <i class="fas fa-clock"></i> Time Management
+      </button>
+      <button onclick="showTip('Avoid unnecessary drama. Maturity is about focusing on what truly matters.')">
+        <i class="fas fa-theater-masks"></i> Avoiding Drama
+      </button>
+      <button onclick="showTip('Keep learning. Growth happens when you embrace new knowledge and experiences.')">
+        <i class="fas fa-book"></i> Continuous Learning
+      </button>
+      <button onclick="showTip('Know your limits and set boundaries. Protecting your peace is a mature choice.')">
+        <i class="fas fa-shield-alt"></i> Setting Boundaries
+      </button>
+      <button onclick="showTip('Forgive, but don’t forget the lessons. Forgiveness is for your peace of mind.')">
+        <i class="fas fa-dove"></i> Forgiveness
+      </button>
+      <button onclick="showTip('Empathy is key. Always consider how others might feel before you act.')">
+        <i class="fas fa-heart"></i> Empathy
+      </button>
+      <button onclick="showTip('Be grateful for what you have while working towards what you want.')">
+        <i class="fas fa-smile"></i> Gratitude
+      </button>
+      <button onclick="randomTip()">
+        <i class="fas fa-random"></i> Random Tip
+      </button>
+    </div>
+
+    <!-- Display Box for Tips -->
+    <div class="tips-display" id="tipsDisplay">Click a button to see a tip here.</div>
+  </div>
+
+  <script>
+    // Function to display the selected tip in the tips-display box with bounce animation
+    function showTip(tip) {
+      const tipsDisplay = document.getElementById('tipsDisplay');
+      tipsDisplay.style.opacity = 0; // Start fade-out
+      setTimeout(() => {
+        tipsDisplay.textContent = tip; // Change content
+        tipsDisplay.style.opacity = 1; // Fade-in
+        tipsDisplay.classList.remove('bounce');
+        void tipsDisplay.offsetWidth; // Trigger reflow to restart animation
+        tipsDisplay.classList.add('bounce');
+      }, 200);
+    }
+
+    // Random tip generator
+    const tips = [
+      "Learn to listen more and speak less. Wisdom grows when you truly understand others.",
+      "Take responsibility for your actions. Owning your mistakes is a sign of true maturity.",
+      "Stay calm in tough situations. Patience and composure lead to better outcomes.",
+      "Think before you act. Reflect on your decisions and their long-term impact.",
+      "Respect everyone’s differences. Being open-minded fosters mutual understanding.",
+      "Value time—it’s your most precious resource. Spend it wisely.",
+      "Avoid unnecessary drama. Maturity is about focusing on what truly matters.",
+      "Keep learning. Growth happens when you embrace new knowledge and experiences.",
+      "Know your limits and set boundaries. Protecting your peace is a mature choice.",
+      "Forgive, but don’t forget the lessons. Forgiveness is for your peace of mind.",
+      "Empathy is key. Always consider how others might feel before you act.",
+      "Be grateful for what you have while working towards what you want."
+    ];
+
+    function randomTip() {
+      const randomIndex = Math.floor(Math.random() * tips.length);
+      showTip(tips[randomIndex]);
+    }
+  </script>
+</body>
+</html>

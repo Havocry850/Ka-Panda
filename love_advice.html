@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ka-Panda - Love Advice</title>
+  <style>
+    /* General reset and styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Background GIF styling */
+    body {
+      background: url('https://gifdb.com/images/high/panda-waving-cartoon-sticker-pi4qfklzce0s7zo5.gif') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f39c12;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Back button styling */
+    .back-button {
+      position: fixed;
+      top: 150px;
+      left: 370px;
+      background: rgba(0, 0, 0, 0.492);
+      color: white;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background: rgb(255, 153, 0);
+    }
+
+    /* Love Advice Section Styling */
+    .advice-container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .advice-container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .advice-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .advice-buttons button {
+      background: rgba(243, 156, 18, 0.9);
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .advice-buttons button:hover {
+      background: rgba(243, 156, 18, 1);
+      transform: scale(1.1);
+    }
+
+    /* Question Submission Styling */
+    .question-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .question-container textarea {
+      width: 90%;
+      max-width: 600px;
+      height: 100px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      resize: none;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: rgb(0, 0, 0);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .question-container button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: rgba(243, 156, 18, 0.9);
+      color: rgb(255, 255, 255);
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .question-container button:hover {
+      background: rgba(243, 156, 18, 1);
+      transform: scale(1.1);
+    }
+
+    /* Response Display Styling */
+    .response-display {
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 1.2rem;
+      background: rgba(240, 240, 240, 0.019);
+      border-radius: 5px;
+      text-align: center;
+      color: rgb(255, 255, 255);
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      animation: fadeInText 0.8s forwards;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Button -->
+  <a href="home.html" class="back-button">⬅ Back</a>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Ka-Panda</h1>
+    <div class="nav-buttons">
+        <a href="home.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="life_advice.html">Life Advice</a>
+        <a href="love_advice.html">Love Advice</a>
+        <a href="maturity_tips.html">Maturity Tips</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="report-a-problem.html">Report a Problem</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="log-out.html">Log Out</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="advice-container">
+    <h2>Love Advice</h2>
+    <p>Click on a button below to get heartwarming advice for love and relationships!</p>
+    <div class="advice-buttons">
+      <button onclick="showAdvice('True love is not about perfection—it’s about embracing each other’s flaws.')">True Love</button>
+      <button onclick="showAdvice('Communication is the bridge that keeps love strong. Always listen and speak from the heart.')">Communication</button>
+      <button onclick="showAdvice('Love yourself first; the right person will see your worth.')">Self-Love</button>
+      <button onclick="showAdvice('A healthy relationship is built on trust, respect, and mutual understanding.')">Healthy Relationships</button>
+    </div>
+
+    <!-- Display Box for Advice -->
+    <div class="response-display" id="adviceDisplay">
+      Click a button to see advice here.
+    </div>
+  </div>
+
+  <!-- Question Submission -->
+  <div class="question-container">
+    <h3>Have a specific question?</h3>
+    <textarea id="userQuestion" placeholder="Type your question here..."></textarea>
+    <br>
+    <button onclick="submitQuestion()">Submit Question</button>
+    <div class="response-display" id="customResponse"></div>
+  </div>
+
+  <script>
+    // Function to display advice in the advice-display box
+    function showAdvice(advice) {
+      const adviceDisplay = document.getElementById('adviceDisplay');
+      adviceDisplay.textContent = advice;
+    }
+
+    // Function to handle question submission
+    function submitQuestion() {
+      const userQuestion = document.getElementById('userQuestion').value.toLowerCase().trim();
+      const responseDisplay = document.getElementById('customResponse');
+
+      if (userQuestion === "") {
+        alert("Please type a question before submitting.");
+      } else {
+        let response;
+
+        // Enhanced keyword matching for responses
+        if (userQuestion.includes("breakup")) {
+          response = "Healing takes time. Focus on self-love and building a better version of yourself.";
+        } else if (userQuestion.includes("trust")) {
+          response = "Trust is earned and given freely. Be open but mindful in love.";
+        } else if (userQuestion.includes("cheating")) {
+          response = "Cheating damages trust. It’s up to both partners to decide if healing is possible.";
+        } else {
+          response = "Your question is important. We'll provide a more tailored response soon.";
+        }
+
+        responseDisplay.textContent = response;
+        document.getElementById('userQuestion').value = ""; // Clear the text area
+      }
+    }
+  </script>
+</body>
+</html>

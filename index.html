@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ka-Panda - Welcome</title>
+  <style>
+    /* General reset and styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Background GIF styling */
+    body {
+      background: url('https://gifdb.com/images/high/panda-waving-cartoon-sticker-pi4qfklzce0s7zo5.gif') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* Welcome container styling */
+    .welcome-container {
+      max-width: 500px;
+      margin: auto;
+      margin-top: 2%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .welcome-container .logo {
+      max-width: 150px;
+      margin-bottom: 12px;
+      border-radius: 10%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .welcome-container h1 {
+      font-size: 2.5rem;
+      color: #f39c12;
+      margin-bottom: 10px;
+    }
+
+    .welcome-container p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .welcome-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .welcome-container label {
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    .welcome-container input {
+      width: 96%;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .welcome-container button {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: rgba(243, 156, 18, 0.9);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .welcome-container button:hover {
+      background: rgba(243, 156, 18, 1);
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t39.30808-6/453720414_122105371112439101_2578707722271155828_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=rW_MJvs4a6sQ7kNvgHUiKfP&_nc_zt=23&_nc_ht=scontent.fmnl9-2.fna&_nc_gid=As3fEkkiyvWCXrG-JUL5Izf&oh=00_AYDC4hjRid4yMS2m5-MUg5QujvSNeuPSUSGZLe1oARqRaw&oe=6767FA27" alt="Ka-Panda Logo" class="logo">
+    <h1>Welcome to Ka-Panda</h1>
+    <p>Your trusted partner for advice and tips</p>
+    <p>have a nice day ahead!</p>
+
+    <form id="signupForm" action="home.html" method="GET">
+      <h2>Create Your Account</h2>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</body>
+</html>

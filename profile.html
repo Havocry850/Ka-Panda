@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ka-Panda - Profile</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* General reset and styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Background GIF styling */
+    body {
+      background: url('https://gifdb.com/images/high/panda-waving-cartoon-sticker-pi4qfklzce0s7zo5.gif') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f39c12;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Profile content styling */
+    .profile-container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .profile-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+
+    .profile-details {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .profile-details li {
+      list-style: none;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .graph-container {
+      margin-top: 30px;
+      text-align: center;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    .graph-container canvas {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Back button styling */
+    .back-button {
+      display: block;
+      margin: 0 auto 20px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: white;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+      width: 100px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-button:hover {
+      background: rgba(243, 156, 18, 0.9);
+      transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Ka-Panda</h1>
+    <div class="nav-buttons">
+        <a href="home.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="life_advice.html">Life Advice</a>
+        <a href="love_advice.html">Love Advice</a>
+        <a href="maturity_tips.html">Maturity Tips</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="report-a-problem.html">Report a Problem</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="log-out.html">Log Out</a>
+    </div>
+  </div>
+
+  <!-- Profile Content -->
+  <div class="profile-container">
+    <!-- Back Button -->
+    <a href="home.html" class="back-button">Back</a>
+
+    <h2>Your Profile</h2>
+    <ul class="profile-details">
+      <li><strong>Name:</strong> <span id="userName">---</span></li>
+      <li><strong>Age:</strong> <span id="userAge">---</span></li>
+      <li><strong>Address:</strong> <span id="userAddress">---</span></li>
+      <li><strong>Status:</strong> <span id="userStatus">---</span></li>
+    </ul>
+
+    <!-- Graph Section -->
+    <div class="graph-container">
+      <h3>Status Tracking Graph</h3>
+      <canvas id="statusGraph"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Load user data from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const userData = JSON.parse(localStorage.getItem('userData')) || null;
+
+      // If user data exists, populate the profile fields
+      if (userData) {
+        document.getElementById('userName').textContent = userData.name || '---';
+        document.getElementById('userAge').textContent = userData.age || '---';
+        document.getElementById('userAddress').textContent = userData.address || '---';
+        document.getElementById('userStatus').textContent = userData.status || '---';
+
+        // Render the graph with the user's statusLog (or an empty graph if no data)
+        renderGraph(userData.statusLog || []);
+      } else {
+        // Render an empty graph for new users
+        renderGraph([]);
+      }
+    });
+
+    // Function to render the graph
+    function renderGraph(data) {
+      const ctx = document.getElementById('statusGraph').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.length > 0 ? Array.from({ length: data.length }, (_, i) => `Day ${i + 1}`) : [],
+          datasets: [{
+            label: 'Happiness Level',
+            data: data,
+            backgroundColor: 'rgba(243, 156, 18, 0.5)',
+            borderColor: '#f39c12',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Day'
+              }
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Happiness Level'
+              },
+              min: 0,
+              max: 5
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

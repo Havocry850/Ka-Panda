@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ka-Panda - Home</title>
+  <style>
+    /* General reset and styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* Background GIF styling */
+    body {
+      background: url('https://gifdb.com/images/high/panda-waving-cartoon-sticker-pi4qfklzce0s7zo5.gif') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent black for contrast */
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #f39c12; /* Ka-Panda signature color */
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Content section styling */
+    .content {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    .content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: rgb(255, 140, 0);
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.553);
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: rgb(255, 255, 255);
+      text-shadow: 1px 1px 5px rgb(0, 0, 0);
+    }
+
+    /* Selection button container */
+    .selection-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* Three buttons per row */
+      gap: 20px;
+      justify-items: center;
+      margin: 50px auto;
+      max-width: 600px;
+    }
+
+    /* Selection button styling */
+    .selection-container a {
+      display: block;
+      text-decoration: none;
+      color: white;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 20px 30px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    /* Hover animation */
+    .selection-container a:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.7);
+    }
+
+    /* Button click animation */
+    .selection-container a:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Floating animation */
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    /* Apply floating animation to buttons */
+    .selection-container a {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <h1>Ka-Panda</h1>
+    <div class="nav-buttons">
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="life_advice.html">Life Advice</a>
+      <a href="love_advice.html">Love Advice</a>
+      <a href="maturity_tips.html">Maturity Tips</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="report-a-problem.html">Report a Problem</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="log-out.html">Log Out</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h2>Welcome, Ka-Panda User!</h2>
+    <p>Choose a section from the options below to explore advice, tips, and more!</p>
+
+    <!-- Selection Buttons -->
+    <div class="selection-container">
+      <a href="profile.html">Profile</a>
+      <a href="life_advice.html">Life Advice</a>
+      <a href="love_advice.html">Love Advice</a>
+      <a href="maturity_tips.html">Maturity Tips</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="report-a-problem.html">Report a Problem</a>
+      <a href="feedback.html">Feedback</a>
+    </div>
+  </div>
+</body>
+</html>
